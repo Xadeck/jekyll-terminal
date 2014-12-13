@@ -15,7 +15,12 @@ class TerminalTest < Minitest::Test
     @terminal = Jekyll::Terminal::StylesheetGenerator.new(@site.config)
   end
   
-  def test_hello
-    assert_equal "hello", "hello"
+  def test_stylesheet_page_added
+    @terminal.generate(@site)
+    page = @site.pages.find { |p| p.name == 'terminal.scss' }
+    assert page, "Couldn't find `terminal.scss` page"
+    assert_equal "css/terminal.scss", page.path
+    # Just check one line (the comment) to ensure content is OK.
+    assert_match %r{/\* Window}, page.content 
   end
 end
