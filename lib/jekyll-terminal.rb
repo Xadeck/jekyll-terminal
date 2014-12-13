@@ -28,7 +28,7 @@ module Jekyll
     end
 
     # Generator that adds the stylesheet page to the generated site.
-    class TerminalGenerator < Generator
+    class StylesheetGenerator < Generator
       safe true
 
       def generate(site)      
