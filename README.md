@@ -1,5 +1,6 @@
 This Gem adds a liquid block to Jekyll-powered sites for showing
-shell commands in a nice way.
+shell commands in a nice way. The rendering uses only CSS, generated as a site page,
+which makes it easily tweakable.
 
 First, add the following tag inside your `head.html` layout.
 
@@ -18,7 +19,7 @@ Sun Dec 14 09:56:26 CET 2014
 {% endterminal %}
 ```
 
-It will get rendered nicely as shown below:
+It will get rendered nicely, with a drop shadow, as shown below:
 
 ![](https://github.com/Xadeck/jekyll-terminal/blob/master/screenshot.png)
 
