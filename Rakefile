@@ -37,17 +37,13 @@ end
 
 desc "Generates a sample rendering of a terminal"
 task :sample => 'sample.html' do
-  puts "Yeah!"
-end
-
-file 'sample.html' => ['sample.md', 'Rakefile'] do |task|
   require_relative 'lib/jekyll-terminal/jekyll-terminal'
   site = Jekyll::Site.new(Jekyll::Configuration::DEFAULTS)
   site.read
   Jekyll::Terminal::StylesheetGenerator.new(site.config).generate(site)
   stylesheet_page = site.pages.find { |p| p.name == 'terminal.scss' }
   template = Liquid::Template.parse(File.read('sample.md'))
-  File.open(task.name, 'w') do |file| 
+  File.open('sample.html', 'w') do |file| 
     file.write(%Q{<html>
     <head>
       <style>
