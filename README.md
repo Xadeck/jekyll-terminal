@@ -31,6 +31,7 @@ It will get rendered nicely, with a drop shadow, as shown below:
 
 ## To be done
 
+- [ ] support simple selection of commands only
 - [ ] make path to stylesheet configurable
 - [ ] simplify the stylesheet using Sass
 - [ ] add themes for the terminal colors
