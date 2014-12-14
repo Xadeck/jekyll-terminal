@@ -29,8 +29,8 @@ end
 desc "Deploy to RubyGems"
 task :deploy => [:test, :check_git, :build] do
   puts "# Tagging directory"
-  system %Q{git tag #{VERSION}}
-  puts "## Deploying Gem"
+  system %Q{git tag -f #{VERSION}}
+  puts "# Deploying Gem"
   system %Q{gem push #{NAME}-#{VERSION}.gem}
   puts "# Deploy complete"
 end
