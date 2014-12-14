@@ -31,6 +31,6 @@ task :deploy => [:test, :check_git, :build] do
   puts "# Tagging directory"
   system %Q{git tag #{VERSION}}
   puts "## Deploying Gem"
-  gem push "#{NAME}-#{VERSION}.gem"
+  system %Q{gem push #{NAME}-#{VERSION}.gem}
   puts "# Deploy complete"
 end
