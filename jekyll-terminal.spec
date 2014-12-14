@@ -12,7 +12,7 @@ END
   s.email       = 'xavier.decoret+jekyll@gmail.com'
   s.files       = [
        "lib/jekyll-terminal.rb",
-       "lib/jekyll-terminal.scss",
+       "lib/terminal.scss",
        ]
   s.homepage    = 'https://github.com/Xadeck/jekyll-terminal'
   s.license     = 'MIT'
