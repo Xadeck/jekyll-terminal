@@ -1,5 +1,6 @@
 require 'rake/testtask'
 require 'rubygems'
+require 'cgi'
 
 SPEC = Gem::Specification::load('jekyll-terminal.spec')
 NAME = SPEC.name
@@ -78,7 +79,7 @@ task :sample => 'sample.html' do
   <body>
     <div>
       <p>The following snippet:</p>
-      <pre>#{sample_md}</pre>
+      <pre>#{CGI.escapeHTML(sample_md)}</pre>
       <p>will be rendered like this with CSS:</p>
       <div>
         <style scoped>#{css}</style>

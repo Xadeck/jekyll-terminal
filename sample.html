@@ -25,10 +25,13 @@
     <div>
       <p>The following snippet:</p>
       <pre>{% terminal %}
-$ echo "Hello world!"
+$ echo &quot;Hello world!&quot;
 Hello world!
 $ date
 Sun Dec 14 09:56:26 CET 2014
+$ cat &lt;&lt;END
+/This will disappear in void
+/END
 {% endterminal %}
 </pre>
       <p>will be rendered like this with CSS:</p>
@@ -135,6 +138,8 @@ nav.control-window {
         color: white; }
       .terminal table td.code span.command {
         color: #FFF; }
+      .terminal table td.code span.continuation {
+        color: #FFF; }
       .terminal table td.code span.output {
         color: #BBB; }
 </style>
@@ -156,12 +161,18 @@ nav.control-window {
 <span>&nbsp;</span><br>
 <span>$</span><br>
 <span>&nbsp;</span><br>
+<span>$</span><br>
+<span>&nbsp;</span><br>
+<span>&nbsp;</span><br>
     </td>
     <td class='code'>
-<span class='command'>echo "Hello world!"</span><br>
+<span class='command'>echo &quot;Hello world!&quot;</span><br>
 <span class='output'>Hello world!</span><br>
 <span class='command'>date</span><br>
 <span class='output'>Sun Dec 14 09:56:26 CET 2014</span><br>
+<span class='command'>cat &lt;&lt;END</span><br>
+<span class='continuation'>This will disappear in void</span><br>
+<span class='continuation'>END</span><br>
     </td>
   </tr>
 </table>

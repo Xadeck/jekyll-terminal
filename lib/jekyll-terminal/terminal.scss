@@ -105,6 +105,7 @@ nav.control-window {
       }
       &.code {
         span.command { color: #FFF; }
+        span.continuation { color: #FFF; }
         span.output { color: #BBB; }      
       }
     }

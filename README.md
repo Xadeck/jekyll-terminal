@@ -29,10 +29,20 @@ It will get rendered nicely, with a drop shadow, as shown below:
 
 ![](https://github.com/Xadeck/jekyll-terminal/blob/master/screenshot.png)
 
+If there is a command that is on multiple line, like an here document, start the line with a slash:
+
+```liquid
+{% terminal %}
+$ cat <<END
+/This will disappear in void
+/END
+{% endterminal %}
+```
+
 ## To be done
 
 - [ ] make title of terminal customizable.
-- [ ] support multiline commands
+- [x] support multiline commands
 - [ ] support simple selection of commands only
 - [ ] make path to stylesheet configurable
 - [x] simplify the stylesheet using Sass

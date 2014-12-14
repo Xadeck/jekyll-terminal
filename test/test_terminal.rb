@@ -31,9 +31,15 @@ $ echo "Hello world!"
 Hello world!
 $ date
 Sun Dec 14 09:56:26 CET 2014
+$ cat <<END
+/This will disappear in void
+/END
 {% endterminal %}
       }).render
-    assert_match %{<span class='command'>echo "Hello world!"</span><br>}, content
+    assert_match %{<span class='command'>echo &quot;Hello world!&quot;</span><br>}, content
     assert_match %{<span class='output'>Hello world!</span><br>}, content
+    assert_match %{<span class='command'>cat &lt;&lt;END</span><br>}, content
+    assert_match %{<span class='continuation'>This will disappear in void</span><br>}, content
+    assert_match %{<span class='continuation'>END</span><br>}, content
   end
 end

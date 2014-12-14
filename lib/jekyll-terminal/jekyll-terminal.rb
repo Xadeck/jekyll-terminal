@@ -1,4 +1,5 @@
 require 'jekyll'
+require 'cgi'
 
 module Jekyll
   module Terminal
@@ -91,24 +92,23 @@ module Jekyll
       end
 
       def gutter(line)
-        gutter_value = line.start_with?(command_character) ? command_character : "&nbsp;"
+        gutter_value = line.start_with?("$") ? "$" : "&nbsp;"
         "<span>#{gutter_value}</span><br>"
       end
 
+      def esc(line)
+        CGI.escapeHTML(line.strip)
+      end
+
       def line_of_code(line)
-        if line.start_with?(command_character)
-          line_class = "command"
-          line = line.sub(command_character,'')
+        if line.start_with?("$")
+          %{<span class='command'>#{esc line[1..-1]}</span><br>}
+        elsif line.start_with?("/")
+            %{<span class='continuation'>#{esc line[1..-1]}</span><br>}
         else
-          line_class = "output"
+          %{<span class='output'>#{esc line}</span><br>}
         end
-        %{<span class='#{line_class}'>#{line.strip}</span><br>}
       end
-
-      def command_character
-        "$"
-      end
-
     end
   end
 end
