@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '../lib/jekyll-terminal/jekyll-terminal'
+require_relative '../lib/jekyll-terminal'
 
 TEST_DIR     = File.expand_path("../", __FILE__)
 DEST_DIR     = File.expand_path("destination", TEST_DIR)

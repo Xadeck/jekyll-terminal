@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'jekyll-terminal'
-  s.version     = '0.0.4'
+  s.version     = '0.0.5'
   s.date        = '2014-12-14'
   s.summary     = 'Render shell-commands nicely in a Jekyll'
   s.description = <<END
@@ -11,8 +11,8 @@ END
   s.author      = 'Xavier Décoret'
   s.email       = 'xavier.decoret+jekyll@gmail.com'
   s.files       = [
-       "lib/jekyll-terminal/jekyll-terminal.rb",
-       "lib/jekyll-terminal/terminal.scss",
+       "lib/jekyll-terminal.rb",
+       "lib/terminal.scss",
        ]
   s.homepage    = 'https://github.com/Xadeck/jekyll-terminal'
   s.license     = 'MIT'
