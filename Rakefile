@@ -38,6 +38,7 @@ end
 
 desc "Generates a sample rendering of a terminal"
 task :sample => 'sample.html' do
+  puts "# Generating sample"
   require_relative 'lib/jekyll-terminal'
   require 'sass'
   # Fake a site to have the generator producer the .scss page.
