@@ -1,7 +1,39 @@
+<!DOCTYPE html>
 <html>
-    <head>
-      <style>
-/*-----------------------------------------------------------------------------------*/
+  <head>
+  	<meta charset="utf-8">
+    <title>Sample for jekyll-template</title>
+    <style>
+      body > div {
+        width: 800px; 
+        margin: auto;
+      }
+      p { 
+        font-family: Helvetica 
+      }
+      pre {
+        padding: 16px;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f7f7f7;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>The following snippet:</p>
+      <pre>{% terminal %}
+$ echo "Hello world!"
+Hello world!
+$ date
+Sun Dec 14 09:56:26 CET 2014
+{% endterminal %}
+</pre>
+      <p>will be rendered like this with CSS:</p>
+      <div>
+        <style scoped>/*-----------------------------------------------------------------------------------*/
 /* Window
 /*-----------------------------------------------------------------------------------*/
 .window {
@@ -105,18 +137,7 @@ nav.control-window {
         color: #FFF; }
       .terminal table td.code span.output {
         color: #BBB; }
-
-      </style>
-    </head>
-    <body>
-    <div style='width: 800px; margin: auto'>
-    <pre>{% terminal %}
-$ echo "Hello world!"
-Hello world!
-$ date
-Sun Dec 14 09:56:26 CET 2014
-{% endterminal %}
-</pre>
+</style>
 
 <div class="window">
   <nav class="control-window">
@@ -148,6 +169,7 @@ Sun Dec 14 09:56:26 CET 2014
   </div>
 </div>
 
+      </div>
     </div>
-    </body>
+  </body>
 </html>

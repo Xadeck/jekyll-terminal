@@ -52,18 +52,40 @@ task :sample => 'sample.html' do
   sample_html = Liquid::Template.parse(sample_md).render
   # Combine all together in a simple
   File.open('sample.html', 'w') do |file|
-    file.write(%Q{<html>
-    <head>
-      <style>
-#{css}
-      </style>
-    </head>
-    <body>
-    <div style='width: 800px; margin: auto'>
-    <pre>#{sample_md}</pre>
+    file.write(%Q{<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <title>Sample for jekyll-template</title>
+    <style>
+      body > div {
+        width: 800px; 
+        margin: auto;
+      }
+      p { 
+        font-family: Helvetica 
+      }
+      pre {
+        padding: 16px;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f7f7f7;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>The following snippet:</p>
+      <pre>#{sample_md}</pre>
+      <p>will be rendered like this with CSS:</p>
+      <div>
+        <style scoped>#{css}</style>
 #{sample_html}
+      </div>
     </div>
-    </body>
+  </body>
 </html>})
  end
 end
