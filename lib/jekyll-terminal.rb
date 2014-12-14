@@ -2,7 +2,6 @@ require 'jekyll'
 
 module Jekyll
   module Terminal
-    # TODO: make this customizable in options.
     def Terminal.dir(site)
       'css'
     end
