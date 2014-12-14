@@ -57,42 +57,52 @@ module Jekyll
 
       def render(context)
         output = super(context)
-        # TODO: make title customizable.
-        %{<div class="window">
-            <nav class="control-window">
-              <a href="#finder" class="close" data-rel="close">close</a>
-              <a href="#" class="minimize">minimize</a>
-              <a href="#" class="deactivate">deactivate</a>
-            </nav>
-            <h1 class="titleInside">Terminal</h1>
-            <div class="container"><div class="terminal">#{promptize(output)}</div></div>
-          </div>}
+        %{
+<div class="window">
+  <nav class="control-window">
+    <a href="#finder" class="close" data-rel="close">close</a>
+    <a href="#" class="minimize">minimize</a>
+    <a href="#" class="deactivate">deactivate</a>
+  </nav>
+  <h1 class="titleInside">Terminal</h1>
+  <div class="container">
+    <div class="terminal">
+#{promptize(output)}
+    </div>
+  </div>
+</div>}
       end
     
       def promptize(content)
         content = content.strip
         gutters = content.lines.map { |line| gutter(line) }
         lines_of_code = content.lines.map { |line| line_of_code(line) }
-
-        table = "<table><tr>"
-        table += "<td class='gutter'><pre class='line-numbers'>#{gutters.join("\n")}</pre></td>"
-        table += "<td class='code'><pre><code>#{lines_of_code.join("")}</code></pre></td>"
-        table += "</tr></table>"
+        %{
+<table>
+  <tr>
+    <td class='gutter'>
+#{gutters.join("\n")}
+    </td>
+    <td class='code'>
+#{lines_of_code.join("\n")}
+    </td>
+  </tr>
+</table>}
       end
 
       def gutter(line)
         gutter_value = line.start_with?(command_character) ? command_character : "&nbsp;"
-        "<span class='line-number'>#{gutter_value}</span>"
+        "<span>#{gutter_value}</span><br>"
       end
 
       def line_of_code(line)
         if line.start_with?(command_character)
           line_class = "command"
-          line = line.sub(command_character,'').strip
+          line = line.sub(command_character,'')
         else
           line_class = "output"
         end
-        "<span class='line #{line_class}'>#{line}</span>"
+        %{<span class='#{line_class}'>#{line.strip}</span><br>}
       end
 
       def command_character

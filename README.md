@@ -31,9 +31,11 @@ It will get rendered nicely, with a drop shadow, as shown below:
 
 ## To be done
 
+- [ ] make title of terminal customizable.
+- [ ] support multiline commands
 - [ ] support simple selection of commands only
 - [ ] make path to stylesheet configurable
-- [ ] simplify the stylesheet using Sass
+- [x] simplify the stylesheet using Sass
 - [ ] add themes for the terminal colors
 
 ## License

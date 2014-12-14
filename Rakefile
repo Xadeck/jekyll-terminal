@@ -60,6 +60,7 @@ task :sample => 'sample.html' do
     </head>
     <body>
     <div style='width: 800px; margin: auto'>
+    <pre>#{sample_md}</pre>
 #{sample_html}
     </div>
     </body>
