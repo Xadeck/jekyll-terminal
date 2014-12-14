@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Render shell-commands nicely in a Jekyll'
   s.description = <<END
 Add a Liquid block `%terminal` for displaying shell commands
-inside a Mac-like terminal. Useful for blogs about programming
+nicely in HTML. Useful for Jekyll-based blogs about programming
 that gives command-line instructions.
 END
   s.author      = 'Xavier Décoret'
