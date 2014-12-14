@@ -18,7 +18,9 @@ Sun Dec 14 09:56:26 CET 2014
 {% endterminal %}
 ```
 
-It will get rendered nicely.
+It will get rendered nicely as shown below:
+
+![](https://github.com/Xadeck/jekyll-terminal/blob/master/screenshot.png)
 
 ## To be done
 
