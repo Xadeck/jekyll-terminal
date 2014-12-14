@@ -1,5 +1,5 @@
 require 'rake/testtask'
-require "rubygems"
+require 'rubygems'
 
 SPEC = Gem::Specification::load('jekyll-terminal.spec')
 NAME = SPEC.name
@@ -38,23 +38,31 @@ end
 desc "Generates a sample rendering of a terminal"
 task :sample => 'sample.html' do
   require_relative 'lib/jekyll-terminal/jekyll-terminal'
+  require 'sass'
+  # Fake a site to have the generator producer the .scss page.
   site = Jekyll::Site.new(Jekyll::Configuration::DEFAULTS)
   site.read
-  Jekyll::Terminal::StylesheetGenerator.new(site.config).generate(site)
-  stylesheet_page = site.pages.find { |p| p.name == 'terminal.scss' }
-  template = Liquid::Template.parse(File.read('sample.md'))
-  File.open('sample.html', 'w') do |file| 
+  Jekyll::Terminal::StylesheetGenerator.new(site.config)
+  site.generate
+  scss_page = site.pages.find { |p| p.name == 'terminal.scss' }
+  # Transform it in CSS by running sass. Would be better to use the site to generate it.
+  css = Sass::Engine.new(scss_page.content, :syntax => :scss).render
+  # Generate the HTML for the liquid template
+  sample_md = File.read('sample.md')
+  sample_html = Liquid::Template.parse(sample_md).render
+  # Combine all together in a simple
+  File.open('sample.html', 'w') do |file|
     file.write(%Q{<html>
     <head>
       <style>
-#{stylesheet_page.content}      
+#{css}
       </style>
     </head>
     <body>
     <div style='width: 800px; margin: auto'>
-#{template.render}    
+#{sample_html}
     </div>
     </body>
-</html>}) 
-  end
+</html>})
+ end
 end
