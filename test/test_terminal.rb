@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'jekyll-terminal'
+require_relative '../lib/jekyll-terminal/jekyll-terminal'
 
 TEST_DIR     = File.expand_path("../", __FILE__)
 DEST_DIR     = File.expand_path("destination", TEST_DIR)
@@ -22,5 +22,18 @@ class TerminalTest < Minitest::Test
     assert_equal "css/terminal.scss", page.path
     # Just check one line (the comment) to ensure content is OK.
     assert_match %r{/\* Window}, page.content 
+  end
+  
+  def test_terminal_block
+    content = Liquid::Template.parse(%Q{
+{% terminal %}
+$ echo "Hello world!"
+Hello world!
+$ date
+Sun Dec 14 09:56:26 CET 2014
+{% endterminal %}
+      }).render
+    assert_match %{<span class='command'>echo "Hello world!"</span><br>}, content
+    assert_match %{<span class='output'>Hello world!</span><br>}, content
   end
 end
