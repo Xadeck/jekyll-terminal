@@ -42,11 +42,12 @@ $ cat <<END
 ## To be done
 
 - [ ] make title of terminal customizable.
-- [x] support multiline commands
-- [ ] support simple selection of commands only
-- [ ] make path to stylesheet configurable
-- [x] simplify the stylesheet using Sass
-- [ ] add themes for the terminal colors
+- [x] support multiline commands.
+- [ ] support simple selection of commands only.
+- [ ] make path to stylesheet configurable.
+- [x] simplify the stylesheet using Sass.
+- [ ] add themes for the terminal colors.
+- [ ] fixed the indentation of HEREDOC.
 
 ## License
 Copyright (c) 2014 Xavier Décoret. MIT license, see [MIT-LICENSE.txt] for details.
