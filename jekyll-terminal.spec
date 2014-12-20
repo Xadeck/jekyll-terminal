@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'jekyll-terminal'
-  s.version     = '0.1.0'
+  s.version     = '0.1.1'
   s.date        = '2014-12-14'
   s.summary     = 'Render shell-commands nicely in a Jekyll'
   s.description = <<END
