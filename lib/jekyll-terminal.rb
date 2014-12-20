@@ -57,6 +57,9 @@ module Jekyll
       end
 
       def render(context)
+        site = context.registers[:site]
+        terminal_config = site.config[:terminal] || {}
+        tag_name = terminal_config[:tag_name] || 'h3'
         output = super(context)
         %{
 <div class="window">
@@ -65,7 +68,7 @@ module Jekyll
     <a href="#" class="minimize">minimize</a>
     <a href="#" class="deactivate">deactivate</a>
   </nav>
-  <h1 class="titleInside">Terminal</h1>
+  <#{tag_name} class="titleInside">Terminal</#{tag_name}>
   <div class="container">
     <div class="terminal">
 #{promptize(output)}

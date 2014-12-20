@@ -39,8 +39,18 @@ $ cat <<END
 {% endterminal %}
 ```
 
+## Configuration
+
+The following variables can be specified in the `_config.yml` file of your jekyll site:
+
+```yaml
+terminal:
+  tag_name: 'h3'  # the tag used for the Terminal's title_
+```
+
 ## To be done
 
+- [ ] fix the table layout for long commands.
 - [ ] make title of terminal customizable.
 - [x] support multiline commands.
 - [ ] support simple selection of commands only.

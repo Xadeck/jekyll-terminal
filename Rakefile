@@ -50,8 +50,10 @@ task :sample => 'sample.html' do
   # Transform it in CSS by running sass. Would be better to use the site to generate it.
   css = Sass::Engine.new(scss_page.content, :syntax => :scss).render
   # Generate the HTML for the liquid template
+  context = Liquid::Context.new
+  context.registers[:site] = site
   sample_md = File.read('sample.md')
-  sample_html = Liquid::Template.parse(sample_md).render
+  sample_html = Liquid::Template.parse(sample_md).render(context)
   # Combine all together in a simple
   File.open('sample.html', 'w') do |file|
     file.write(%Q{<!DOCTYPE html>
