@@ -36,7 +36,7 @@ class TerminalTest < Minitest::Test
     assert page, "Couldn't find `terminal.scss` page"
     assert_equal "css/terminal.scss", page.path
     # Just check one line (the comment) to ensure content is OK.
-    assert_match %r{/\* Window}, page.content 
+    assert_match "font-family: monospace;", page.content
   end
   
   def test_terminal_block
@@ -51,12 +51,12 @@ $ cat <<END
 /END
 {% endterminal %}
       })
-    assert_match %{<span class='command'>echo &quot;Hello world!&quot;</span><br>}, content
-    assert_match %{<span class='output'>Hello world!</span><br>}, content
-    assert_match %{<span class='command'>cat &lt;&lt;END</span><br>}, content
-    assert_match %{<span class='continuation'>This will disappear in void</span><br>}, content
-    assert_match %{<span class='continuation'>END</span><br>}, content
-    assert_match %{<h3 class="titleInside">Terminal</h3>}, content
+    assert_match %{<span class='command'>echo &quot;Hello world!&quot;</span>}, content
+    assert_match %{<span class='output'>Hello world!</span>}, content
+    assert_match %{<span class='command'>cat &lt;&lt;END</span>}, content
+    assert_match %{<span class='continuation'>This will disappear in void</span>}, content
+    assert_match %{<span class='continuation'>END</span>}, content
+    assert_match %{<h3 class="title">Terminal</h3>}, content
   end
 end
 
@@ -69,22 +69,13 @@ class ConfiguredTerminalTest < Minitest::Test
     }
   end
 
-  def test_stylesheet_page_added
-    @terminal.generate(@site)
-    page = @site.pages.find { |p| p.name == 'terminal.scss' }
-    assert page, "Couldn't find `terminal.scss` page"
-    assert_equal "css/terminal.scss", page.path
-    # Just check one line (the comment) to ensure content is OK.
-    assert_match %r{/\* Window}, page.content
-  end
-
   def test_terminal_block
     content = render_template(%Q{
 {% terminal %}
 $ echo "Hello world!"
 {% endterminal %}
       })
-    assert_match %{<h4 class="titleInside">Terminal</h4>}, content
+    assert_match %{<h4 class="title">Terminal</h4>}, content
   end
 end
 

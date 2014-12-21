@@ -45,19 +45,19 @@ The following variables can be specified in the `_config.yml` file of your jekyl
 
 ```yaml
 terminal:
-  tag_name: 'h3'  # the tag used for the Terminal's title_
+  tag_name: 'h3'  # the tag used for the Terminal's title
 ```
 
 ## To be done
 
-- [ ] fix the table layout for long commands.
+- [x] fix the table layout for long commands.
 - [ ] make title of terminal customizable.
 - [x] support multiline commands.
 - [ ] support simple selection of commands only.
 - [ ] make path to stylesheet configurable.
 - [x] simplify the stylesheet using Sass.
 - [ ] add themes for the terminal colors.
-- [ ] fixed the indentation of HEREDOC.
+- [x] fix the indentation of HEREDOC.
 
 ## License
 Copyright (c) 2014 Xavier Décoret. MIT license, see [MIT-LICENSE.txt] for details.
