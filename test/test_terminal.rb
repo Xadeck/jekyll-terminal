@@ -9,7 +9,7 @@ module TestHelpers
     @site = Jekyll::Site.new(
           Jekyll::Utils.deep_merge_hashes(
             Jekyll::Configuration::DEFAULTS,
-            config)
+            config.merge({"source" => "test"}))
           )
     @site.read
     @terminal = Jekyll::Terminal::StylesheetGenerator.new(@site.config)

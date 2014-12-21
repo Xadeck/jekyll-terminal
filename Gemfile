@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
-gem 'github-pages', '29'
+gem 'jekyll'
 gem 'rake'
 gem 'minitest'
