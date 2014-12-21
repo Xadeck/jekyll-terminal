@@ -5,7 +5,7 @@ shell commands in a nice way. The rendering uses only CSS, generated as a site p
 which makes it easily tweakable.
 
 [![Gem Version](https://badge.fury.io/rb/jekyll-terminal.svg)](http://badge.fury.io/rb/jekyll-terminal)
-
+[![Build status](https://travis-ci.org/Xadeck/jekyll-terminal.png?branch=master)](https://travis-ci.org/jekyll-terminal/)
 ## Basic use
 
 First, add the following tag inside your `head.html` layout.
