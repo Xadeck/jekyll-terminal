@@ -29,7 +29,7 @@ It will get rendered nicely, with a drop shadow, as shown on snapshot below:
 
 ![](https://github.com/Xadeck/jekyll-terminal/blob/master/screenshot.png)
 
-Download the sel-contained `sample.html` file in this repository to see how it is rendered in your favorite browser. Or check an on-line rendering at http://htmlpreview.github.io/?https://github.com/Xadeck/jekyll-terminal/blob/master/sample.html.
+Download the sel-contained `sample.html` file in this repository to see how it is rendered in your favorite browser. Or check an [online rendering](http://htmlpreview.github.io/?https://github.com/Xadeck/jekyll-terminal/blob/master/sample.html).
 
 ## Advanced use
 Lines starting with `$ ` are considered commands and will be rendered as such. If you need a command on multiple line, like an here document, start the line with a slash:
