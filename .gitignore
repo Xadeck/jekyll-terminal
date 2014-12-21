@@ -1,2 +1,4 @@
 jekyll-terminal*.gem
 .sass-cache/
+.bundle
+vendor/
