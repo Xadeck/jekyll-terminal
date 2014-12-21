@@ -31,6 +31,9 @@ Sun Dec 14 09:56:26 CET 2014
 $ cat &lt;&lt;END
 /This will disappear in void
 /END
+$ echo &#39;this line is an artificially long comand&#39; | sed &#39;s/comand/command to test rendering/&#39; | grep line | tee /dev/null
+this is an artificially long command to test rendering
+$ echo
 {% endterminal %}
 </pre>
       <p>will be rendered like this with CSS:</p>
@@ -42,7 +45,6 @@ $ cat &lt;&lt;END
   border-radius: 5px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 22px 50px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
   text-align: left;
-  overflow-x: auto;
   overflow-y: hidden; }
   .terminal > nav:first-of-type {
     float: left;
@@ -100,6 +102,7 @@ $ cat &lt;&lt;END
     text-align: center;
     text-transform: capitalize; }
   .terminal > pre:first-of-type {
+    white-space: pre-wrap;
     margin: 0;
     padding: 1em;
     border-radius: 0;
@@ -136,6 +139,9 @@ $ cat &lt;&lt;END
 <span class='command'>cat &lt;&lt;END</span>
 <span class='continuation'>This will disappear in void</span>
 <span class='continuation'>END</span>
+<span class='command'>echo &#39;this line is an artificially long comand&#39; | sed &#39;s/comand/command to test rendering/&#39; | grep line | tee /dev/null</span>
+<span class='output'>this is an artificially long command to test rendering</span>
+<span class='command'>echo</span>
   </pre>
 </div>
 
@@ -158,6 +164,9 @@ $ cat &lt;&lt;END
 <span class='command'>cat &lt;&lt;END</span>
 <span class='continuation'>This will disappear in void</span>
 <span class='continuation'>END</span>
+<span class='command'>echo &#39;this line is an artificially long comand&#39; | sed &#39;s/comand/command to test rendering/&#39; | grep line | tee /dev/null</span>
+<span class='output'>this is an artificially long command to test rendering</span>
+<span class='command'>echo</span>
   </pre>
 </div>
 

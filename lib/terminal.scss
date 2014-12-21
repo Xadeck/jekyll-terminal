@@ -5,7 +5,6 @@
   border-radius: 5px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 22px 50px 4px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
   text-align: left;
-  overflow-x: auto;
   overflow-y: hidden;
   
   & > nav:first-of-type {
@@ -68,6 +67,7 @@
     text-transform: capitalize;
   }  
   & > pre:first-of-type {
+    white-space: pre-wrap;
     margin: 0;
     padding: 1em;
     border-radius: 0;
