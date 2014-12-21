@@ -60,58 +60,33 @@ module Jekyll
         site = context.registers[:site]
         terminal_config = site.config[:terminal] || {}
         tag_name = terminal_config[:tag_name] || 'h3'
-        output = super(context)
+        content = super(context).strip.lines.map do |line|
+          if line.start_with?("$")
+             "<span class='command'>#{esc line[1..-1]}</span>"
+          elsif line.start_with?("/")
+             "<span class='continuation'>#{esc line[1..-1]}</span>"
+          else
+             "<span class='output'>#{esc line}</span>"        
+          end
+        end.join("\n")        
         %{
-<div class="window">
-  <nav class="control-window">
-    <a href="#finder" class="close" data-rel="close">close</a>
+<div class="terminal">
+  <nav>
+    <a href="#" class="close">close</a>
     <a href="#" class="minimize">minimize</a>
     <a href="#" class="deactivate">deactivate</a>
   </nav>
-  <#{tag_name} class="titleInside">Terminal</#{tag_name}>
-  <div class="container">
-    <div class="terminal">
-#{promptize(output)}
-    </div>
-  </div>
+  <#{tag_name} class="title">Terminal</#{tag_name}>
+  <pre>
+#{content}
+  </pre>
 </div>}
       end
     
-      def promptize(content)
-        content = content.strip
-        gutters = content.lines.map { |line| gutter(line) }
-        lines_of_code = content.lines.map { |line| line_of_code(line) }
-        %{
-<table>
-  <tr>
-    <td class='gutter'>
-#{gutters.join("\n")}
-    </td>
-    <td class='code'>
-#{lines_of_code.join("\n")}
-    </td>
-  </tr>
-</table>}
-      end
-
-      def gutter(line)
-        gutter_value = line.start_with?("$") ? "$" : "&nbsp;"
-        "<span>#{gutter_value}</span><br>"
-      end
-
       def esc(line)
         CGI.escapeHTML(line.strip)
       end
 
-      def line_of_code(line)
-        if line.start_with?("$")
-          %{<span class='command'>#{esc line[1..-1]}</span><br>}
-        elsif line.start_with?("/")
-            %{<span class='continuation'>#{esc line[1..-1]}</span><br>}
-        else
-          %{<span class='output'>#{esc line}</span><br>}
-        end
-      end
     end
   end
 end
