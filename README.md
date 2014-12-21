@@ -25,11 +25,14 @@ Sun Dec 14 09:56:26 CET 2014
 {% endterminal %}
 ```
 
-It will get rendered nicely, with a drop shadow, as shown below:
+It will get rendered nicely, with a drop shadow, as shown on snapshot below:
 
 ![](https://github.com/Xadeck/jekyll-terminal/blob/master/screenshot.png)
 
-If there is a command that is on multiple line, like an here document, start the line with a slash:
+Download the sel-contained `sample.html` file in this repository to see how it is rendered in your favorite browser. Or check an on-line rendering at http://htmlpreview.github.io/?https://github.com/Xadeck/jekyll-terminal/blob/master/sample.html.
+
+## Advanced use
+Lines starting with `$ ` are considered commands and will be rendered as such. If you need a command on multiple line, like an here document, start the line with a slash:
 
 ```liquid
 {% terminal %}
@@ -38,6 +41,8 @@ $ cat <<END
 /END
 {% endterminal %}
 ```
+
+Anyother line (not starting with `$` or `/`) will be considered output. In the rendered HTML, output lines are marked as non user selectable (a feature supported by some browsers). Similarly, command lines are rendered with the `$ ` added via CSS. As a result, it is very easy for your viewers to copy/paste a list of commands from your page to their terminal.
 
 ## Configuration
 
@@ -53,7 +58,7 @@ terminal:
 - [x] fix the table layout for long commands.
 - [ ] make title of terminal customizable.
 - [x] support multiline commands.
-- [ ] support simple selection of commands only.
+- [x] support simple selection of commands only.
 - [ ] make path to stylesheet configurable.
 - [x] simplify the stylesheet using Sass.
 - [ ] add themes for the terminal colors.
