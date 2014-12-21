@@ -42,7 +42,12 @@ task :sample => 'sample.html' do
   require_relative 'lib/jekyll-terminal'
   require 'sass'
   # Fake a site to have the generator producer the .scss page.
-  site = Jekyll::Site.new(Jekyll::Configuration::DEFAULTS)
+  site = Jekyll::Site.new(
+    Jekyll::Utils.deep_merge_hashes(
+      Jekyll::Configuration::DEFAULTS,
+      {"source" => "test"}
+    )
+  )
   site.read
   Jekyll::Terminal::StylesheetGenerator.new(site.config)
   site.generate
