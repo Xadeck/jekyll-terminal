@@ -54,7 +54,10 @@ task :sample => 'sample.html' do
   context.registers[:site] = site
   sample_md = File.read('sample.md')
   sample_html = Liquid::Template.parse(sample_md).render(context)
-  # Combine all together in a simple
+  # Generate a copy of the sample with the CSS class changed to disable 
+  # stylesheet (since the scoped attribute on the <div>< element is not yet supported).
+  unstyled_sample_html = sample_html.sub(%Q{class="terminal"}, "")
+  # Combine all together in a simple file.
   File.open('sample.html', 'w') do |file|
     file.write(%Q{<!DOCTYPE html>
 <html>
@@ -70,9 +73,8 @@ task :sample => 'sample.html' do
         font-family: Helvetica 
       }
       pre {
-        padding: 16px;
+        padding: 1em;
         overflow: auto;
-        font-size: 85%;
         line-height: 1.45;
         background-color: #f7f7f7;
         border-radius: 3px;
@@ -87,6 +89,10 @@ task :sample => 'sample.html' do
       <div>
         <style scoped>#{css}</style>
 #{sample_html}
+      </div>
+      <p>and like that if CSS is disabled:</p>
+      <div>
+#{unstyled_sample_html}
       </div>
     </div>
   </body>

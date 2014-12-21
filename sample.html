@@ -12,9 +12,8 @@
         font-family: Helvetica 
       }
       pre {
-        padding: 16px;
+        padding: 1em;
         overflow: auto;
-        font-size: 85%;
         line-height: 1.45;
         background-color: #f7f7f7;
         border-radius: 3px;
@@ -123,6 +122,28 @@ $ cat &lt;&lt;END
 </style>
 
 <div class="terminal">
+  <nav>
+    <a href="#" class="close">close</a>
+    <a href="#" class="minimize">minimize</a>
+    <a href="#" class="deactivate">deactivate</a>
+  </nav>
+  <h3 class="title">Terminal</h3>
+  <pre>
+<span class='command'>echo &quot;Hello world!&quot;</span>
+<span class='output'>Hello world!</span>
+<span class='command'>date</span>
+<span class='output'>Sun Dec 14 09:56:26 CET 2014</span>
+<span class='command'>cat &lt;&lt;END</span>
+<span class='continuation'>This will disappear in void</span>
+<span class='continuation'>END</span>
+  </pre>
+</div>
+
+      </div>
+      <p>and like that if CSS is disabled:</p>
+      <div>
+
+<div >
   <nav>
     <a href="#" class="close">close</a>
     <a href="#" class="minimize">minimize</a>
