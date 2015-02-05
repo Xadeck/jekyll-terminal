@@ -1,5 +1,7 @@
 #jekyll-terminal
 
+[![Join the chat at https://gitter.im/Xadeck/jekyll-terminal](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Xadeck/jekyll-terminal?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This Gem adds a liquid block to Jekyll-powered sites for showing
 shell commands in a nice way. The rendering uses only CSS, generated as a site page,
 which makes it easily tweakable.
