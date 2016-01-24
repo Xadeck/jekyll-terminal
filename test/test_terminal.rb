@@ -19,17 +19,17 @@ module TestHelpers
 
   def render_template(template)
     Liquid::Template.parse(template).render(@context)
-  end  
+  end
 end
 
 
-class TerminalTest < Minitest::Test  
+class TerminalTest < Minitest::Test
   include TestHelpers
 
   def setup
     setup_site({})
   end
-  
+
   def test_stylesheet_page_added
     @terminal.generate(@site)
     page = @site.pages.find { |p| p.name == 'terminal.scss' }
@@ -38,7 +38,7 @@ class TerminalTest < Minitest::Test
     # Just check one line (the comment) to ensure content is OK.
     assert_match "font-family: monospace;", page.content
   end
-  
+
   def test_terminal_block
     content = render_template(%Q{
 {% terminal %}

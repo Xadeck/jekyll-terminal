@@ -6,11 +6,11 @@ module Jekyll
     def Terminal.dir(site)
       'css'
     end
-    
+
     def Terminal.basename(site)
       'terminal'
     end
-    
+
     # Page that reads its contents from the Gem `terminal.sass` file.
     class StylesheetPage <  Page
       def initialize(site, base, dir)
@@ -20,7 +20,7 @@ module Jekyll
         @name = Jekyll::Terminal::basename(site)+ '.scss'
 
         self.process(@name)
-      
+
         filepath = File.join(File.dirname(File.expand_path(__FILE__)), @name)
         self.content = File.read(filepath, merged_file_read_opts({}))
         self.data ||= {}
@@ -31,7 +31,7 @@ module Jekyll
     class StylesheetGenerator < Generator
       safe true
 
-      def generate(site)      
+      def generate(site)
         site.pages << StylesheetPage.new(site, site.source, Jekyll::Terminal::dir(site))
       end
     end
@@ -41,14 +41,14 @@ module Jekyll
         super
         @text = text
       end
-        
+
       def render(context)
         site = context.registers[:site]
         url =  Jekyll::Terminal::dir(site) + '/' + Jekyll::Terminal::basename(site)
         "<link rel='stylesheet' href='#{site.baseurl}/#{url}.css'>"
       end
     end
-  
+
     class CommandsBlock < Liquid::Block
 
       def initialize(tag_name, text, tokens)
@@ -66,9 +66,9 @@ module Jekyll
           elsif line.start_with?("/")
              "<span class='continuation'>#{esc line[1..-1]}</span>"
           else
-             "<span class='output'>#{esc line}</span>"        
+             "<span class='output'>#{esc line}</span>"
           end
-        end.join("\n")        
+        end.join("\n")
         %{
 <div class="terminal">
   <nav>
@@ -82,7 +82,7 @@ module Jekyll
   </pre>
 </div>}
       end
-    
+
       def esc(line)
         CGI.escapeHTML(line.strip)
       end
