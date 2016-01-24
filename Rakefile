@@ -2,7 +2,7 @@ require 'rake/testtask'
 require 'rubygems'
 require 'cgi'
 
-SPEC = Gem::Specification::load('jekyll-terminal.spec')
+SPEC = Gem::Specification::load('jekyll-terminal.gemspec')
 NAME = SPEC.name
 VERSION = SPEC.version
 
@@ -24,7 +24,7 @@ end
 desc "Build the Ruby gem for jekyll-terminal"
 task :build do
   puts "# Building gem"
-  system %Q{gem build jekyll-terminal.spec}
+  system %Q{gem build jekyll-terminal.gemspec}
 end
 
 desc "Deploy to RubyGems"
