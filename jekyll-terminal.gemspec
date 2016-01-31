@@ -16,9 +16,8 @@ END
        ]
   s.homepage    = 'https://github.com/Xadeck/jekyll-terminal'
   s.license     = 'MIT'
-  
+
   s.require_paths = ['lib']
-  s.add_runtime_dependency 'jekyll', '~> 2.0'
-  s.add_development_dependency 'jekyll', '~> 2.0'
+  s.add_runtime_dependency 'jekyll', ['>= 2.0', '< 4.0']
   s.required_ruby_version = '~> 2.0'
 end
