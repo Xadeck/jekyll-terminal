@@ -22,7 +22,7 @@ module Jekyll
         self.process(@name)
 
         filepath = File.join(File.dirname(File.expand_path(__FILE__)), @name)
-        self.content = File.read(filepath, merged_file_read_opts({}))
+        self.content = File.read(filepath, Utils.merged_file_read_opts(self.site, {}))
         self.data ||= {}
       end
     end
