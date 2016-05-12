@@ -10,7 +10,13 @@ which makes it easily tweakable.
 [![Build status](https://travis-ci.org/Xadeck/jekyll-terminal.png?branch=master)](https://travis-ci.org/jekyll-terminal/)
 ## Basic use
 
-First, add the following tag inside your `head.html` layout.
+First, add the plugin to your jekyll site, by putting the following lines in your `_config.yml` file inside the generaged jekyll directory.
+```yaml
+gems: 
+  - jekyll-terminal
+```
+
+Then, add the following tag inside your `_includes/head.html` layout, next to the existing stylesheets tags.
 
 ```liquid
 {% terminal_stylesheet %}    
@@ -31,7 +37,7 @@ It will get rendered nicely, with a drop shadow, as shown on snapshot below:
 
 ![](https://github.com/Xadeck/jekyll-terminal/blob/master/screenshot.png)
 
-Download the sel-contained `sample.html` file in this repository to see how it is rendered in your favorite browser. Or check an [online rendering](http://htmlpreview.github.io/?https://github.com/Xadeck/jekyll-terminal/blob/master/sample.html).
+Download the self-contained `sample.html` file in this repository to see how it is rendered in your favorite browser. Or check an [online rendering](http://htmlpreview.github.io/?https://github.com/Xadeck/jekyll-terminal/blob/master/sample.html).
 
 ## Advanced use
 Lines starting with `$ ` are considered commands and will be rendered as such. If you need a command on multiple line, like an here document, start the line with a slash:
