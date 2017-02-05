@@ -60,11 +60,15 @@ module Jekyll
         site = context.registers[:site]
         terminal_config = site.config[:terminal] || {}
         tag_name = terminal_config[:tag_name] || 'h3'
+        continuation_string = terminal_config[:continuation_string] || '/'
+        continuation_string = '/' if continuation_string == '$'
         content = super(context).strip.lines.map do |line|
-          if line.start_with?("$")
+          # Test the continuation string first, because it may start with '$'.
+          # Note that it can't be '$' thanks to the guard above.
+          if line.start_with?(continuation_string)
+             "<span class='continuation'>#{esc line[continuation_string.size..-1]}</span>"          
+          elsif line.start_with?("$")
              "<span class='command'>#{esc line[1..-1]}</span>"
-          elsif line.start_with?("/")
-             "<span class='continuation'>#{esc line[1..-1]}</span>"
           else
              "<span class='output'>#{esc line}</span>"
           end

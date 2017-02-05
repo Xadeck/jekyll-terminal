@@ -54,23 +54,22 @@ Anyother line (not starting with `$` or `/`) will be considered output. In the r
 
 ## Configuration
 
-The following variables can be specified in the `_config.yml` file of your jekyll site:
+The following variables can be specified in the `_config.yml` file of your jekyll site. 
+The values shown are the default values:
 
 ```yaml
 terminal:
   tag_name: 'h3'  # the tag used for the Terminal's title
+  continuation_string: '/' # lines starting with this continue the previous $ line_
 ```
+The `continuation_str` solves the #4 issue, where the output of a command, such as `ls` would be starting by the default continuation string (`/`). Yep, I made a poor initial choice and I can't change it now because I would break existing users.
+
 
 ## To be done
 
-- [x] fix the table layout for long commands.
 - [ ] make title of terminal customizable.
-- [x] support multiline commands.
-- [x] support simple selection of commands only.
 - [ ] make path to stylesheet configurable.
-- [x] simplify the stylesheet using Sass.
 - [ ] add themes for the terminal colors.
-- [x] fix the indentation of HEREDOC.
 
 ## License
 Copyright (c) 2014 Xavier Décoret. MIT license, see [MIT-LICENSE.txt] for details.

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'jekyll-terminal'
-  s.version     = '0.1.3'
-  s.date        = '2016-05-11'
+  s.version     = '0.1.4'
+  s.date        = '2017-02-05'
   s.summary     = 'Render shell-commands nicely in a Jekyll'
   s.description = <<END
 Add a Liquid block `%terminal` for displaying shell commands

@@ -65,17 +65,52 @@ class ConfiguredTerminalTest < Minitest::Test
 
   def setup
     setup_site :terminal => {
-      :tag_name => 'h4'
+      :tag_name => 'h4',
+      :continuation_string => '$/'
     }
   end
 
   def test_terminal_block
     content = render_template(%Q{
 {% terminal %}
-$ echo "Hello world!"
+$ locate stdio.h
+/usr/include/stdio.h
+$ cat <<END
+$/This will disappear in void
+$/END
 {% endterminal %}
       })
     assert_match %{<h4 class="title">Terminal</h4>}, content
+    assert_match %{<span class='command'>locate stdio.h</span>}, content
+    assert_match %{<span class='output'>/usr/include/stdio.h</span>}, content
+    assert_match %{<span class='command'>cat &lt;&lt;END</span>}, content
+    assert_match %{<span class='continuation'>This will disappear in void</span>}, content
+    assert_match %{<span class='continuation'>END</span>}, content
   end
 end
+
+class BadConfiguredTerminalTest < Minitest::Test
+  include TestHelpers
+
+  def setup
+    setup_site :terminal => {
+      :continuation_string => '$'
+    }
+  end
+
+  def test_terminal_block
+    content = render_template(%Q{
+{% terminal %}
+$ cat <<END
+/This will disappear in void
+/END
+{% endterminal %}
+      })
+    assert_match %{<span class='command'>cat &lt;&lt;END</span>}, content
+    assert_match %{<span class='continuation'>This will disappear in void</span>}, content
+    assert_match %{<span class='continuation'>END</span>}, content
+  end
+
+end
+
 
